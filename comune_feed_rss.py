@@ -66,7 +66,7 @@ def generate_rss_feed(response):
     soup = BeautifulSoup(response.text, 'html.parser')  # Usa response.text per ottenere il corpo della risposta
     feed = FeedGenerator()
     feed.title('Albo Pretorio - Comune di Soriano nel Cimino')
-    feed.link(href='https://cloud.urbi.it/urbi/progs/urp/ur1ME002.sto?DB_NAME=n1200674')
+    feed.link(href='https://raw.githubusercontent.com/alexb-1983/myrss/refs/heads/master/albo_pretorio_feed.rss', rel='self', type="application/rss+xml")
     feed.description('Feed RSS degli ultimi documenti pubblicati sull''Albo Pretorio del Comune di Soriano nel Cimino')
 
     rows = soup.find('tbody').find_all('tr')
@@ -95,7 +95,8 @@ def generate_rss_feed(response):
         entry.title(titolo)
         entry.link(href=link)
         entry.description(descrizione)
-
+        entry.guid(f"{link}")
+		
     return feed
 
 # Genera il feed RSS
