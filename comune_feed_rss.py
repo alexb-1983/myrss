@@ -98,11 +98,12 @@ def generate_rss_feed(response):
 
     return feed
 
-
-
-
-# Esegui il codice
+# Genera il feed RSS
 feed = generate_rss_feed(response)
 
-# Scrivi il feed in un file
-feed.rss_file('feed.rss')
+# Sovrascrive il file albo_pretorio_feed.rss esistente
+output_file = 'albo_pretorio_feed.rss'
+feed.rss_file(output_file)
+print(f"Il file RSS è stato aggiornato: {output_file}")
+
+
