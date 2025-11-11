@@ -1,8 +1,16 @@
 from feedgen.feed import FeedGenerator
 from bs4 import BeautifulSoup
 import requests
+import subprocess
 
-curl -I https://cloud.urbi.it
+# Esegue curl e cattura l'output
+result = subprocess.run(
+    ["curl", "-I", "https://cloud.urbi.it"],
+    capture_output=True,
+    text=True
+)
+
+print(result.stdout)
 
 url = "https://cloud.urbi.it/urbi/progs/urp/ur1ME002.sto"
 params = {
