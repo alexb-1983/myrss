@@ -2,6 +2,8 @@ from feedgen.feed import FeedGenerator
 from bs4 import BeautifulSoup
 import requests
 
+curl -I https://cloud.urbi.it
+
 url = "https://cloud.urbi.it/urbi/progs/urp/ur1ME002.sto"
 params = {
     'DB_NAME': 'n1200674',
