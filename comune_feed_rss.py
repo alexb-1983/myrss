@@ -41,8 +41,15 @@ data = {
     'Stepper_NextStepNome': ''
 }
 
-# Inviare la richiesta POST
-response = requests.post(url, params=params, data=data)
+# usa una sessione persistente per mantenere i cookie
+s = requests.Session()
+s.headers.update(headers)
+
+# prima un GET per creare la sessione
+s.get(url, params={"DB_NAME": "n1200674"}, timeout=10)
+
+# poi la POST con tutti i parametri
+response = s.post(url, params=params, data=data, timeout=15)
 
 # Verifica la risposta
 if response.status_code == 200:
